@@ -21,7 +21,7 @@ export const skillCategories = [
   },
   {
     title: "Backend",
-    items: ["Laravel Blade", "Node.js", "Express.js", "Koa"],
+    items: ["Node.js", "Express.js", "Koa"],
   },
   {
     title: "Databases",

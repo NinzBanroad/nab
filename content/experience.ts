@@ -3,7 +3,7 @@ import type { Experience } from "@/types/portfolio";
 export const experiences = [
   {
     company: "Outworx IT Consultancy",
-    role: "Full Stack Web Developer",
+    role: "Front-End Developer",
     start: "2025-08",
     location: "Remote / Cebu, Philippines",
     responsibilities: [

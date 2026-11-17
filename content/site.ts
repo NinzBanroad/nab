@@ -4,7 +4,7 @@ import type { SiteConfig } from "@/types/portfolio";
 export const site = {
   name: "Niño Anthony Y. Bandalan",
   shortName: "Niño Bandalan",
-  title: "Full Stack Web Developer",
+  title: "Web Developer",
   url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL, process.env.NODE_ENV),
   address: {
     locality: "Mandaue City",
