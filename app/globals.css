@@ -1,75 +1,61 @@
 @import "tailwindcss";
 
+/*
+ * Quiet single column (after jarielbalberona.dev): near-white paper, ink, hairline rules,
+ * one forest-green accent for actions. See docs/plans/2026-11-17-brochure-redesign-design.md.
+ */
 :root {
-  --bg: #232323;
-  --surface: #2b2b2b;
-  --primary: #ffffff;
-  --secondary: #c8f31d;
-  --accent: var(--secondary);
-  --on-accent: #101010;
-  --text: #ffffff;
-  --muted: #9ca3af;
-  --border: #3a3a3a;
-
-  --radius: 1.75rem;
-  --shadow: 0 30px 80px -30px rgb(0 0 0 / 0.55);
-  --shadow-soft: 0 20px 50px -30px rgb(0 0 0 / 0.35);
+  --ground: #fcfcfa;
+  --ground-raised: #f3f2ee;
+  --ink: #141614;
+  --ink-soft: #4b504c;
+  --muted: #6c716d;
+  --rule: #e4e4df;
+  --accent: #1f4a3c;
+  --on-accent: #fcfcfa;
 }
 
-[data-theme="light"] {
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --primary: #000000;
-  --secondary: #55e6a5;
-  --text: #000000;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-
-  --shadow: 0 30px 80px -30px rgb(15 23 42 / 0.06);
-  --shadow-soft: 0 20px 50px -30px rgb(15 23 42 / 0.04);
+[data-theme="dark"] {
+  --ground: #121413;
+  --ground-raised: #1a1d1b;
+  --ink: #ecebe6;
+  --ink-soft: #c2c4bf;
+  --muted: #8f948f;
+  --rule: #2a2e2b;
+  --accent: #8fcfb5;
+  --on-accent: #121413;
 }
 
 @theme inline {
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
+  --color-ground: var(--ground);
+  --color-ground-raised: var(--ground-raised);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
   --color-accent: var(--accent);
   --color-on-accent: var(--on-accent);
-  --color-text: var(--text);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
 
-  --radius-card: var(--radius);
-
-  --shadow-card: var(--shadow);
-  --shadow-card-soft: var(--shadow-soft);
-
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 @layer base {
-  [data-theme="dark"] {
-    color-scheme: dark;
-  }
-
   [data-theme="light"] {
     color-scheme: light;
+  }
+
+  [data-theme="dark"] {
+    color-scheme: dark;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-heading);
+  body {
+    background: var(--ground);
+    color: var(--ink);
   }
 
   a {
@@ -78,8 +64,13 @@
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--accent) 30%, transparent);
-    color: var(--text);
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -94,11 +85,92 @@
     display: none;
   }
 
-  [data-theme="light"] .theme-icon-dark {
+  [data-theme="dark"] .theme-icon-dark {
     display: none;
   }
 
-  [data-theme="light"] .theme-icon-light {
+  [data-theme="dark"] .theme-icon-light {
     display: inline;
+  }
+
+  /* Small monospaced section label. */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .underlined {
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.28em;
+    transition: text-decoration-color 150ms ease-out;
+  }
+
+  .underlined:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .button {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    padding-inline: 1.25rem;
+    border: 1px solid var(--rule);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    transition:
+      border-color 150ms ease-out,
+      background-color 150ms ease-out;
+  }
+
+  .button:hover {
+    border-color: var(--ink);
+  }
+
+  .button-primary {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .button-primary:hover {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--ground);
+  }
+}
+
+/* "Print as CV": ink on white, no interface. */
+@media print {
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  :root,
+  [data-theme="dark"] {
+    --ground: #ffffff;
+    --ground-raised: #ffffff;
+    --ink: #000000;
+    --ink-soft: #222222;
+    --muted: #444444;
+    --rule: #bbbbbb;
+    --accent: #000000;
+  }
+
+  html {
+    font-size: 11px;
+  }
+
+  .print-hidden {
+    display: none !important;
+  }
+
+  section,
+  li {
+    break-inside: avoid;
   }
 }

@@ -1,27 +1,33 @@
-import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
-import { Eyebrow } from "@/components/ui/SectionHeading";
+import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
+import { PrintButton } from "@/components/ui/PrintButton";
 import { Section } from "@/components/ui/Section";
+import { SectionIntro } from "@/components/ui/SectionIntro";
 import { sectionIds, site } from "@/content";
 
 export function ContactSection() {
   return (
-    <Section id={sectionIds.contact}>
-      <Card>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <Eyebrow>Contact</Eyebrow>
-            <h2 className="mt-3 text-3xl font-semibold text-text">
-              Ready to discuss your next web project.
-            </h2>
-          </div>
-          <Button href={`mailto:${site.email}`}>Say hello</Button>
-        </div>
-        <p className="mt-6 max-w-3xl text-sm leading-7 text-muted">
-          I&rsquo;m available for frontend consulting, product collaboration, and web application
-          development with a focus on performance and maintainability.
-        </p>
-      </Card>
+    <Section id={sectionIds.contact} labelledBy="contact-title">
+      <SectionIntro
+        label="Availability"
+        title="Open to web projects and frontend consulting."
+        headingId="contact-title"
+      />
+      <p className="mt-5 max-w-[60ch] leading-7 text-ink-soft">
+        I&rsquo;m available for frontend consulting, product collaboration, and web application
+        development with a focus on performance and maintainability.
+      </p>
+
+      <a
+        href={`mailto:${site.email}`}
+        className="underlined mt-6 inline-flex min-h-11 items-center text-lg font-semibold"
+      >
+        Start a conversation — {site.email}
+      </a>
+
+      <div className="print-hidden mt-4 flex flex-wrap gap-3">
+        <CopyEmailButton email={site.email} className="button" />
+        <PrintButton className="button">Print as CV</PrintButton>
+      </div>
     </Section>
   );
 }

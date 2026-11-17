@@ -2,7 +2,7 @@ import type { Theme } from "@/types/portfolio";
 
 export const THEME_STORAGE_KEY = "nab-theme";
 
-export const DEFAULT_THEME: Theme = "dark";
+export const DEFAULT_THEME: Theme = "light";
 
 export const themeInitScript = `(function(){try{var t=localStorage.getItem(${JSON.stringify(
   THEME_STORAGE_KEY,

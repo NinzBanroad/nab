@@ -1,25 +1,30 @@
-import { Eyebrow } from "@/components/ui/SectionHeading";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { navLinks, site } from "@/content";
 
 export function SiteHeader() {
   return (
-    <header className="flex flex-col gap-6 pb-6 sm:flex-row sm:items-center sm:justify-between">
-      <div className="space-y-1">
-        <Eyebrow>{site.title}</Eyebrow>
-        <p className="text-2xl font-semibold tracking-tight text-text sm:text-3xl">{site.name}</p>
-        <p className="text-sm text-muted">{site.location}</p>
-      </div>
+    <header className="flex flex-wrap items-center justify-between gap-x-8 gap-y-2 pt-8 sm:pt-12">
+      <a href="#main" className="flex min-h-11 flex-col justify-center">
+        <span className="font-semibold">{site.name}</span>
+        <span className="text-sm text-ink-soft">{site.title}</span>
+      </a>
 
-      <div className="flex flex-wrap items-center gap-4">
-        <nav aria-label="Page sections" className="flex flex-wrap gap-4 text-sm text-muted">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="transition-colors hover:text-accent">
-              {link.label}
-            </a>
-          ))}
+      <div className="print-hidden flex items-center gap-2 max-sm:w-full max-sm:justify-between">
+        <nav aria-label="Sections">
+          <ul className="flex gap-x-4 sm:gap-x-5">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="flex min-h-11 items-center text-sm text-ink-soft transition-colors hover:text-ink sm:text-[0.9375rem]"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </nav>
-        <ThemeToggle />
+        <ThemeToggle className="-mr-3" />
       </div>
     </header>
   );

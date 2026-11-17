@@ -1,12 +1,24 @@
-import type { HTMLAttributes } from "react";
+import type { ReactNode } from "react";
 
 import { cn } from "@/lib/cn";
 
-type SectionProps = HTMLAttributes<HTMLElement>;
+type SectionProps = {
+  /** Anchor id for in-page navigation. */
+  id?: string;
+  /** Id of the section's heading, for aria-labelledby. */
+  labelledBy: string;
+  className?: string;
+  children: ReactNode;
+};
 
-export function Section({ className, children, ...props }: SectionProps) {
+/** A page section separated from the previous one by a hairline rule. */
+export function Section({ id, labelledBy, className, children }: SectionProps) {
   return (
-    <section className={cn("scroll-mt-24 space-y-10", className)} {...props}>
+    <section
+      id={id}
+      aria-labelledby={labelledBy}
+      className={cn("scroll-mt-6 border-t border-rule py-16 sm:py-20", className)}
+    >
       {children}
     </section>
   );

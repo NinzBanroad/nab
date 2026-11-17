@@ -1,31 +1,33 @@
-import { Card } from "@/components/ui/Card";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
-import { sectionIds, skillCategories } from "@/content";
+import { SectionIntro } from "@/components/ui/SectionIntro";
+import { education, sectionIds, site, skillCategories } from "@/content";
 
 export function SkillsSection() {
+  const groups = [...skillCategories, { title: "Strengths", items: site.strengths }];
+
   return (
-    <Section id={sectionIds.skills}>
-      <SectionHeading
-        label="Skills"
-        title="Technical capabilities"
-        description="A broad toolset for frontend and backend development, CMS implementation, and modern delivery workflows."
+    <Section id={sectionIds.skills} labelledBy="skills-title">
+      <SectionIntro
+        label="Toolkit"
+        title="Skills, strengths and education"
+        headingId="skills-title"
       />
 
-      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-        {skillCategories.map((category) => (
-          <Card key={category.title} className="p-6">
-            <h3 className="text-lg font-semibold text-text">{category.title}</h3>
-            <ul className="mt-4 space-y-2 text-sm text-muted">
-              {category.items.map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Card>
+      <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {groups.map(({ title, items }) => (
+          <li key={title} className="border-t border-rule pt-5">
+            <h3 className="font-semibold">{title}</h3>
+            <p className="mt-2 leading-7 text-ink-soft">{items.join(", ")}</p>
+          </li>
         ))}
+      </ul>
+
+      <div className="mt-12 border-t border-rule pt-5">
+        <h3 className="font-semibold">Education</h3>
+        <p className="mt-2 text-ink-soft">
+          {education.qualification}, {education.specialization} · {education.institution}
+        </p>
+        <p className="mt-1 text-sm text-muted">{education.period}</p>
       </div>
     </Section>
   );

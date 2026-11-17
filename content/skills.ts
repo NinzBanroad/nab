@@ -31,4 +31,8 @@ export const skillCategories = [
     title: "Platforms",
     items: ["Adobe Experience Manager", "Sitecore", "Azure"],
   },
+  {
+    title: "Workflow",
+    items: ["Git", "Bitbucket", "Jira", "Confluence", "Slides.com", "Claude Code"],
+  },
 ] satisfies readonly SkillCategory[];

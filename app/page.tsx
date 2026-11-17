@@ -1,21 +1,27 @@
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { AboutSection } from "@/components/sections/AboutSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { CurrentRoleSection } from "@/components/sections/CurrentRoleSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { ServicesSection } from "@/components/sections/ServicesSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
+import { PersonJsonLd } from "@/components/seo/PersonJsonLd";
 
 export default function Home() {
   return (
-    <div className="mx-auto min-h-screen max-w-6xl px-6 py-8 lg:px-10">
+    <div className="mx-auto max-w-[54rem] px-6 sm:px-8">
+      <PersonJsonLd />
       <SiteHeader />
-      <main className="flex flex-col gap-20 py-10">
+      <main id="main" className="scroll-mt-6">
         <HeroSection />
-        <SkillsSection />
+        <CurrentRoleSection />
+        <ServicesSection />
         <ExperienceSection />
-        <AboutSection />
+        <SkillsSection />
         <ContactSection />
       </main>
+      <SiteFooter />
     </div>
   );
 }

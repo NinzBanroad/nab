@@ -4,7 +4,7 @@ export const experiences = [
   {
     company: "Outworx IT Consultancy",
     role: "Full Stack Web Developer",
-    period: "August 2025 – Present",
+    start: "2025-08",
     location: "Remote / Cebu, Philippines",
     responsibilities: [
       "Develop and maintain websites for real estate clients using React, Next.js, TypeScript, Tailwind CSS, PHP Blade, and modern frontend patterns.",
@@ -28,7 +28,8 @@ export const experiences = [
   {
     company: "Accenture",
     role: "Web Developer / Marketing Analyst",
-    period: "May 2021 – June 2025",
+    start: "2021-05",
+    end: "2025-06",
     responsibilities: [
       "Developed, modified, tested, and maintained web applications and marketing websites.",
       "Revamped existing pages and implemented client-requested features to improve performance and usability.",
@@ -42,7 +43,8 @@ export const experiences = [
   {
     company: "Beautitag Limited",
     role: "Full Stack Web Developer",
-    period: "April 2020 – March 2021",
+    start: "2020-04",
+    end: "2021-03",
     responsibilities: [
       "Developed REST APIs using Node.js and Express and maintained web application features.",
       "Implemented responsive user interfaces with React, Redux, Bootstrap, Material UI, and Semantic UI React.",
@@ -53,7 +55,8 @@ export const experiences = [
   {
     company: "Nerubia",
     role: "Web Developer Intern",
-    period: "July 2019 – March 2020",
+    start: "2019-07",
+    end: "2020-03",
     responsibilities: [
       "Assisted in developing and maintaining web applications across frontend and backend implementations.",
       "Collaborated with senior developers on feature development and bug fixes.",
